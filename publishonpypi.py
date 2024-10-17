@@ -14,9 +14,9 @@ if opsy == "":
 packages_comma = input("Welche Packages Werden Benötigt? (Mit , Geteilt) ")
 packageslist = str(packages_comma.split(","))
 modulepathlist = modulepath.split("\\")
-filename = modulepathlist[len(modulepathlist - 1)]
+filename = modulepathlist[len(modulepathlist) - 1]
 filenamelist = filename.split(".")
-filenamenopy = filenamelist[len(filenamelist - 1)]
+filenamenopy = filenamelist[len(filenamelist) - 1]
 os.system(f'mkdir {name}')
 os.chdir(name)
 jlkutils.writenewline("secrets.py", f"apikey = {apikey}")

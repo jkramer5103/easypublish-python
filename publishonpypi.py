@@ -1,4 +1,5 @@
 import os
+from shutil import move
 import jlkutils
 apikey = input("Gib deinen PyPi Api Key ein: ")
 author = input("Dein Voller Name (Wenn dieser offentlich sein soll): ")
@@ -30,7 +31,8 @@ os.system("curl -O https://raw.githubusercontent.com/jkramer5103/easypublish-pyt
 os.system("curl -O https://raw.githubusercontent.com/jkramer5103/easypublish-python/refs/heads/main/build.py")
 os.system(f"mkdir {name}")
 os.chdir(name)
-os.system(f'copy "{modulepath}" ')
+destination_path = os.getcwd()
+move(modulepath, destination_path)
 commands = jlkutils.getcoms(filename)
 liststring = listtostring(commands)
 jlkutils.writetofile("__init__.py", f"from .{filenamenopy} install {liststring}")

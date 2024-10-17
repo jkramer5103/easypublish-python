@@ -16,7 +16,7 @@ packageslist = str(packages_comma.split(","))
 modulepathlist = modulepath.split("\\")
 filename = modulepathlist[len(modulepathlist) - 1]
 filenamelist = filename.split(".")
-filenamenopy = filenamelist[len(filenamelist) - 1]
+filenamenopy = filenamelist[len(filenamelist) - 2]
 os.system(f'mkdir {name}')
 os.chdir(name)
 jlkutils.writenewline("secrets.py", f'apikey = "{apikey}"')
@@ -33,5 +33,5 @@ os.system(f'copy "{modulepath}" ')
 commands = jlkutils.getcoms(filename)
 liststring = listtostring(commands)
 jlkutils.writetofile("__init__.py", f"from .{filenamenopy} install {liststring}")
-os.system("cls")
+#os.system("cls")
 print("Um es zu Veröffentlichen, führe einfach nur build.py aus.")

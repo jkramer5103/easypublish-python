@@ -14,8 +14,8 @@ if opsy == "":
     opsy = "OS Independent"
 packages_comma = input("Welche Packages Werden Benötigt? (Mit , Geteilt) ")
 packageslist = str(packages_comma.split(","))
-modulepathlist = modulepath.split("\\")
 modulepathwin = modulepath.replace("/", "\\")
+modulepathlist = modulepathwin.split("\\")
 filename = modulepathlist[len(modulepathlist) - 1]
 filenamelist = filename.split(".")
 filenamenopy = filenamelist[len(filenamelist) - 2]

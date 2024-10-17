@@ -12,8 +12,7 @@ def listtostring(liste):
 modulepath = jlkutils.choose_file()
 if opsy == "":
     opsy = "OS Independent"
-packages_comma = input("Welche Packages Werden Benötigt? (Mit , Geteilt) ")
-packageslist = str(packages_comma.split(","))
+packages = input("Welche Packages Werden Benötigt? (Mit , Geteilt) ")
 modulepathwin = modulepath.replace("/", "\\")
 modulepathlist = modulepathwin.split("\\")
 filename = modulepathlist[len(modulepathlist) - 1]
@@ -22,7 +21,7 @@ filenamenopy = filenamelist[len(filenamelist) - 2]
 os.system(f'mkdir {name}')
 os.chdir(name)
 jlkutils.writenewline("secrets.py", f'apikey = "{apikey}"')
-jlkutils.writenewline("secrets.py", f'packages = "{packageslist}"')
+jlkutils.writenewline("secrets.py", f'packages = "{packages}"')
 jlkutils.writenewline("secrets.py", f'name = "{name}"')
 jlkutils.writenewline("secrets.py", f'author = "{author}"')
 jlkutils.writenewline("secrets.py", f'opsy = "{opsy}"')

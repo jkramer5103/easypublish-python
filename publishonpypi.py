@@ -11,7 +11,7 @@ def listtostring(liste):
 modulepath = jlkutils.choose_file()
 if opsy == "":
     opsy = "OS Independent"
-packages_comma = input("Welche Packages Werden Benötigt? (Mit , Geteilt) "
+packages_comma = input("Welche Packages Werden Benötigt? (Mit , Geteilt) ")
 packageslist = str(packages_comma.split(","))
 modulepathlist = modulepath.split("\\")
 filename = modulepathlist[len(modulepathlist - 1)]

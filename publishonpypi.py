@@ -21,7 +21,7 @@ filenamenopy = filenamelist[len(filenamelist) - 2]
 os.system(f'mkdir {name}')
 os.chdir(name)
 jlkutils.writenewline("secrets.py", f'apikey = "{apikey}"')
-jlkutils.writenewline("secrets.py", f'packages = "{packages}"')
+jlkutils.writenewline("secrets.py", f'packages = {packages}')
 jlkutils.writenewline("secrets.py", f'name = "{name}"')
 jlkutils.writenewline("secrets.py", f'author = "{author}"')
 jlkutils.writenewline("secrets.py", f'opsy = "{opsy}"')

@@ -1,5 +1,5 @@
 import os
-from shutil import move
+from shutil import copy
 import jlkutils
 apikey = input("Gib deinen PyPi Api Key ein: ")
 author = input("Dein Voller Name (Wenn dieser offentlich sein soll): ")
@@ -10,9 +10,17 @@ print("Wähle dein Package aus.")
 def listtostring(liste):
     return ", ".join(liste)
 modulepath = jlkutils.choose_file()
+def convert_input(input_string):
+    # Split the input string by commas and strip any leading/trailing whitespace
+    items = [item.strip() for item in input_string.split(',')]
+    # Format each item with double quotes
+    formatted_items = ', '.join([f'"{item}"' for item in items])
+    return formatted_items
+
 if opsy == "":
     opsy = "OS Independent"
-packages = input('Welche Packages Werden Benötigt? (Format "package1", "package2") ')
+packages = convert_input(input('Welche Packages Werden Benötigt? (Format package1,package2) '))
+
 modulepathwin = modulepath.replace("/", "\\")
 modulepathlist = modulepathwin.split("\\")
 filename = modulepathlist[len(modulepathlist) - 1]
@@ -31,7 +39,7 @@ os.system("curl -O https://raw.githubusercontent.com/jkramer5103/easypublish-pyt
 os.system(f"mkdir {name}")
 os.chdir(name)
 destination_path = os.getcwd()
-move(modulepath, destination_path)
+copy(modulepath, destination_path)
 commands = jlkutils.getcoms(destination_path + "\\" + filename)
 liststring = listtostring(commands)
 jlkutils.writetofile("__init__.py", f"from .{filenamenopy} import {liststring}")

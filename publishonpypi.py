@@ -18,7 +18,6 @@ def convert_input(input_string):
 
 if opsy == "":
     opsy = "OS Independent"
-packages = convert_input(input('Which packages are required? (Format: package1,package2) '))
 
 modulepathwin = modulepath.replace("/", "\\")
 modulepathlist = modulepathwin.split("\\")
@@ -27,6 +26,7 @@ filenamelist = filename.split(".")
 filenamenopy = filenamelist[len(filenamelist) - 2]
 os.system(f'mkdir {name}')
 os.chdir(name)
+packages = get_imports(modulepath)
 jlkutils.writenewline("secrets.py", f'apikey = "{apikey}"')
 jlkutils.writenewline("secrets.py", f'packages = {packages}')
 jlkutils.writenewline("secrets.py", f'name = "{name}"')

@@ -26,7 +26,7 @@ filenamelist = filename.split(".")
 filenamenopy = filenamelist[len(filenamelist) - 2]
 os.system(f'mkdir {name}')
 os.chdir(name)
-packages = get_imports(modulepath)
+packages = jlkutils.get_imports(modulepath)
 jlkutils.writenewline("secrets.py", f'apikey = "{apikey}"')
 jlkutils.writenewline("secrets.py", f'packages = {packages}')
 jlkutils.writenewline("secrets.py", f'name = "{name}"')

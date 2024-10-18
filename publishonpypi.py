@@ -1,12 +1,12 @@
 import os
 from shutil import copy
 import jlkutils
-apikey = input("Gib deinen PyPi Api Key ein: ")
-author = input("Dein Voller Name (Wenn dieser offentlich sein soll): ")
-name = input("Wie soll das Package heißen? ")
-opsy = input("Welches Betriebssystem braucht dein Package? (Wenn Egal einfach Enter drücken): ")
-description = input("Beschreibe dein Package einfach: ")
-print("Wähle dein Package aus.")
+apikey = input("Enter your PyPi Api Key: ")
+author = input("Your Full Name (If you want this to be public): ")
+name = input("What should the package be named? ")
+opsy = input("Which operating system does your package require? (Press Enter if it doesn't matter): ")
+description = input("Briefly describe your package: ")
+print("Select your package.")
 def listtostring(liste):
     return ", ".join(liste)
 modulepath = jlkutils.choose_file()
@@ -19,7 +19,7 @@ def convert_input(input_string):
 
 if opsy == "":
     opsy = "OS Independent"
-packages = convert_input(input('Welche Packages Werden Benötigt? (Format package1,package2) '))
+packages = convert_input(input('Which packages are required? (Format: package1,package2) '))
 
 modulepathwin = modulepath.replace("/", "\\")
 modulepathlist = modulepathwin.split("\\")
@@ -43,5 +43,5 @@ copy(modulepath, destination_path)
 commands = jlkutils.getcoms(destination_path + "\\" + filename)
 liststring = listtostring(commands)
 jlkutils.writetofile("__init__.py", f"from .{filenamenopy} import {liststring}")
-#os.system("cls")
-print("Um es zu Veröffentlichen, führe einfach nur build.py aus.")
+os.system("cls")
+print("To publish it, just run build.py in the folder called like your package name.")

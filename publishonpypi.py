@@ -2,7 +2,6 @@ import os
 from shutil import copy
 import jlkutils
 apikey = input("Enter your PyPi Api Key: ")
-author = input("Your Full Name (If you want this to be public): ")
 name = input("What should the package be named? ")
 opsy = input("Which operating system does your package require? (Press Enter if it doesn't matter): ")
 description = input("Briefly describe your package: ")
@@ -44,4 +43,4 @@ commands = jlkutils.getcoms(destination_path + "\\" + filename)
 liststring = listtostring(commands)
 jlkutils.writetofile("__init__.py", f"from .{filenamenopy} import {liststring}")
 os.system("cls")
-print("To publish it, just run build.py in the folder called like your package name.")
+print("To publish it, just run build.py in the folder called {name}.")

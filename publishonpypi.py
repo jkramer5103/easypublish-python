@@ -23,7 +23,7 @@ if platform.system == "Windows":
     modulepathwin = modulepath.replace("/", "\\")
     modulepathlist = modulepathwin.split("\\")
 else:
-    modulepathlist = modulepathwin.split("/")
+    modulepathlist = modulepath.split("/")
 filename = modulepathlist[len(modulepathlist) - 1]
 filenamelist = filename.split(".")
 filenamenopy = filenamelist[len(filenamelist) - 2]

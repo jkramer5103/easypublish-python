@@ -1,6 +1,7 @@
 import os
 from shutil import copy
 import jlkutils
+import platform
 apikey = input("Enter your PyPi Api Key: ")
 name = input("What should the package be named? ")
 opsy = input("Which operating system does your package require? (Press Enter if it doesn't matter): ")
@@ -18,9 +19,11 @@ def convert_input(input_string):
 
 if opsy == "":
     opsy = "OS Independent"
-
-modulepathwin = modulepath.replace("/", "\\")
-modulepathlist = modulepathwin.split("\\")
+if platform.system == "Windows":
+    modulepathwin = modulepath.replace("/", "\\")
+    modulepathlist = modulepathwin.split("\\")
+else:
+    modulepathlist = modulepathwin.split("/")
 filename = modulepathlist[len(modulepathlist) - 1]
 filenamelist = filename.split(".")
 filenamenopy = filenamelist[len(filenamelist) - 2]
@@ -38,7 +41,10 @@ os.system(f"mkdir {name}")
 os.chdir(name)
 destination_path = os.getcwd()
 copy(modulepath, destination_path)
-commands = jlkutils.getcoms(destination_path + "\\" + filename)
+if platform.system() == "Windows":
+    commands = jlkutils.getcoms(destination_path + "\\" + filename)
+else:
+    commands = jlkutils.getcoms(destination_path + "/" + filename)
 liststring = listtostring(commands)
 jlkutils.writetofile("__init__.py", f"from .{filenamenopy} import {liststring}")
 os.system("cls")

@@ -2,7 +2,11 @@ import secrets
 from os import system
 import pyperclip
 import re
-system("del dist\\* /F /Q")
+import platform
+if platform.system() == "Windows":
+    system("del dist\\* /F /Q")
+else:
+    system("rm dist\\*")
 filename = "setup.py"
 # Öffne die setup.py Datei und lies ihren Inhalt
 with open(filename, "r") as file:
@@ -31,7 +35,7 @@ else:
 
 
 
-system("python setup.py sdist bdist_wheel")
+system("python3 setup.py sdist bdist_wheel")
 
 print("Drücke Strg + V und danach Enter")
 pyperclip.copy(secrets.apikey)

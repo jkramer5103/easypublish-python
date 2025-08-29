@@ -35,8 +35,9 @@ else:
 
 
 
-system("python3 setup.py sdist bdist_wheel")
+system("python setup.py sdist bdist_wheel")
 
 print("Drücke Strg + V und danach Enter")
 pyperclip.copy(secrets.apikey)
 system("twine upload dist/*")
+
